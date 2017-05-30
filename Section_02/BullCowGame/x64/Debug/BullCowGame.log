@@ -1,4 +1,2 @@
 ﻿  main.cpp
 d:\git\unreal-game-development\section_02\bullcowgame\main.cpp(43): error C3867: 'FBullCow::GetMaxTries': non-standard syntax; use '&' to create a pointer to member
-  FBullCow2.cpp
-  Generating Code...

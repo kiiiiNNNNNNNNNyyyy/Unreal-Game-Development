@@ -28,11 +28,11 @@ int32 main() {
 
 //print the intro
 void PrintIntro() {
-
-	constexpr int32 word_length = 10;														//this thing can be evaluated at the compile time.
+													//this thing can be evaluated at the compile time.
 	std::cout << "Welcome to Bull and Cow, a fun word game!!\n";								//std = standard To get into the standard namespace
-	std::cout << "Can you guess the " << word_length << " letter isogram I'm thinking of?\n";
-
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength();
+	std::cout << " letter isogram I'm thinking of?\n" << std::endl;
+	return;
 
 }
 
@@ -44,7 +44,10 @@ void PlayGame()
 
 	for (int32 i = 0; i < MaxTries; i++) {
 		FText Guess = GetGuess();
-		std::cout << "Your guess was: " << Guess << std::endl;
+
+		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+		std::cout << "Bulls = " << BullCowCount.Bulls	;
+		std::cout << "Cows = " << BullCowCount.Cows << std::endl;
 	}
 }
 
