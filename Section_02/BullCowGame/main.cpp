@@ -1,20 +1,26 @@
 #include <iostream>																		//pre processor directive
 #include <string>
+#include "FBullCow2.h"
 
-using namespace std;
+using FText = std::string;
+using int32 = int;
 
 void PrintIntro();
-string  GetGuess();
+FText GetGuess();
 void PlayGame();
 bool PlayAgain();
+FBullCow BCGame;
 
 void PlayGame();
 
-int main() {
+int32 main() {
 
-	PrintIntro();
-	PlayGame();
-	PlayAgain();
+	bool bplayAgain = false;
+	do {
+		PrintIntro();
+		PlayGame();
+		bplayAgain = PlayAgain();
+	}while (bplayAgain);
 
 	return 0;
 
@@ -23,38 +29,39 @@ int main() {
 //print the intro
 void PrintIntro() {
 
-	constexpr int word_length = 10;														//this thing can be evaluated at the compile time.
-	cout << "Welcome to Bull and Cow, a fun word game!!\n";								//std = standard To get into the standard namespace
-	cout << "Can you guess the " << word_length << " letter isogram I'm thinking of?\n";
+	constexpr int32 word_length = 10;														//this thing can be evaluated at the compile time.
+	std::cout << "Welcome to Bull and Cow, a fun word game!!\n";								//std = standard To get into the standard namespace
+	std::cout << "Can you guess the " << word_length << " letter isogram I'm thinking of?\n";
 
 
 }
 
 void PlayGame()
 {
-	constexpr int number_of_turns = 5;
 
-	for (int i = 0; i < number_of_turns; i++) {
-		string Guess = GetGuess();
-		cout << "Your guess was: " << Guess << endl;
-		cout << endl;
+	BCGame.Reset();
+	int32 MaxTries = BCGame.GetMaxTries;
+
+	for (int32 i = 0; i < MaxTries; i++) {
+		FText Guess = GetGuess();
+		std::cout << "Your guess was: " << Guess << std::endl;
 	}
 }
 
 //Guess the number
-string GetGuess() {
+FText GetGuess() {
 	
-	cout << "Enter your guess : ";
-	string Guess = "";
-	getline(cin, Guess);
+	std::cout << "Enter your guess : ";
+	FText Guess = "";
+	std::getline(std::cin, Guess);
 	return Guess;
 
 }
 
 bool PlayAgain() {
-	cout << "Do you wanna play again? ";
-	string Response = "";
-	getline(cin, Response);
+	std::cout << "Do you wanna play again (y/n)? ";
+	FText Response = "";
+	std::getline(std::cin, Response);
 	return (Response[0] == 'y') || (Response[0] == 'Y');
 
 }
