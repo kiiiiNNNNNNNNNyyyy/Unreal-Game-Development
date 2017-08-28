@@ -30,17 +30,17 @@ std::string GetGuess() {
 // When we create functions using tools, they are automatically added to the main.h file
 void PlayGame()
 {
-	BCGame.GetMaxTries();
+	BCGame.Reset();
 	int MaxTries = BCGame.GetMaxTries();
-	std::cout << MaxTries << std::endl;
-
 
 	// Loop for the number of turns asking for guesses
 	constexpr int number_of_turns = 5;
-	for (int i = 0; i < number_of_turns; i++) {
-		std::string Guess = GetGuess();
 
-		// Repeat the guess back to them
+	//TODO Chnge from for to a while loop
+	for (int i = 0; i < number_of_turns; i++) {
+		std::string Guess = GetGuess();	// TODO make loop checking valid
+
+		// Submit valid guess to the game	
 		std::cout << "Your guess was " << Guess << std::endl;
 	}
 }
@@ -59,6 +59,8 @@ int main() {
 	do{
 		PrintIntro();
 		PlayGame();
+
+		// TODO -  Add todo list to added to the task list in visual studio task list
 		wants_to_play_again = AskToPlayAgain();
 	}while (wants_to_play_again);
 	
