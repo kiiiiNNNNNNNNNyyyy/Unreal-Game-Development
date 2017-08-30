@@ -48,7 +48,11 @@ void PlayGame()
 	for (int32 i = 0; i < number_of_turns; i++) {
 		FText Guess = GetGuess();	// TODO make loop checking valid
 
-		// Submit valid guess to the game	
+		// Submit valid guess to the game
+		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+		std::cout << "Bulls = " << BullCowCount.Bulls;
+		std::cout << " .Cows = " << BullCowCount.Cows << std::endl;
+
 		std::cout << "Your guess was " << Guess << std::endl;
 	}
 }
